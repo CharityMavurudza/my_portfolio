@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity Mavurudza | Portfolio 2026</title>
+    
+    <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/globe.png">
+    
+    <meta name="keywords" content="Cyber Security, Networking, Software Development, Web Dev, Python, C++, Penetration Testing">
+    <meta name="description" content="Portfolio of Charity Mavurudza - Specialist in Secure Frameworks and Network Engineering.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --accent: #ff006e;
+            --sec: #3a86ff;
+            --text: #ffffff;
+            --text-dim: #a0a0a0;
+            --card: rgba(255, 255, 255, 0.03);
+            --nav-bg: rgba(5, 5, 5, 0.8);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --whatsapp: #25d366;
+        }
+
+        [data-theme="light"] {
+            --bg: #f5f5f7;
+            --accent: #d00056;
+            --sec: #0056d2;
+            --text: #1d1d1f;
+            --text-dim: #424245;
+            --card: rgba(0, 0, 0, 0.05);
+            --nav-bg: rgba(245, 245, 247, 0.8);
+            --input-bg: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; transition: background 0.3s ease, color 0.3s ease; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+        #glow {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            position: fixed; pointer-events: none; z-index: 0; opacity: 0.15;
+            transform: translate(-50%, -50%); transition: transform 0.1s ease-out;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+        nav { padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 100; backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); background: var(--nav-bg); }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 900; font-size: 1.4rem; background: linear-gradient(to right, var(--accent), var(--sec)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; }
+        
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .theme-toggle {
+            background: var(--card); border: 1px solid rgba(255,255,255,0.1); color: var(--text);
+            padding: 8px 12px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.8rem;
+        }
+
+        section { padding: 100px 0; }
+        
+        #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
+        .hero-flex { display: flex; align-items: center; justify-content: space-between; gap: 4rem; width: 100%; }
+        .hero-text { flex: 1.2; }
+        .hero-image-container { flex: 0.8; display: flex; justify-content: center; position: relative; }
+        
+        .profile-img {
+            width: 100%; max-width: 400px; aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            transition: 0.5s ease;
+            background: rgba(255,255,255,0.05);
+        }
+        .profile-img:hover { transform: scale(1.02) translateY(-10px); border-color: var(--accent); }
+
+        .hero-tag { border: 1px solid var(--accent); color: var(--accent); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; letter-spacing: 2px; display: inline-block; margin-bottom: 1rem; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
+        
+        .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 320px); gap: 1.5rem; margin-top: 2rem; }
+        
+        .project-link { text-decoration: none; color: inherit; display: block; height: 100%; }
+        
+        .bento-item { 
+            background: var(--card); border: 1px solid rgba(255,255,255,0.05); border-radius: 28px; 
+            padding: 2.5rem; transition: 0.4s; display: flex; flex-direction: column; justify-content: flex-end;
+            height: 100%;
+        }
+        .bento-item:hover { transform: translateY(-10px); border-color: var(--accent); background: rgba(255, 255, 255, 0.08); }
+        .lg { grid-column: span 2; }
+        .wide { grid-column: span 3; }
+
+        .status-badge {
+            font-size: 0.65rem; padding: 4px 10px; border-radius: 10px; border: 1px solid;
+            text-transform: uppercase; letter-spacing: 1px; font-weight: 700;
+        }
+
+        .skills-wrap { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+        .skill-pill { padding: 12px 24px; background: var(--card); border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; font-weight: 500; display: flex; align-items: center; gap: 10px; }
+
+        .contact-card { background: var(--card); border-radius: 32px; padding: 3rem; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .full-width { grid-column: span 2; }
+        input, textarea {
+            width: 100%; padding: 1.2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);
+            background: var(--input-bg); color: var(--text); font-size: 1rem; outline: none;
+        }
+        .submit-btn {
+            width: 100%; padding: 1.2rem; border-radius: 15px; border: none;
+            background: linear-gradient(90deg, var(--accent), var(--sec));
+            color: white; font-weight: 900; cursor: pointer; text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--whatsapp); color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 1000; text-decoration: none;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        footer { padding: 80px 0 40px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; }
+        .footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; padding-bottom: 50px; }
+        .footer-nav { display: flex; gap: 2rem; flex-wrap: wrap; list-style: none; }
+        .footer-nav a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .footer-nav a:hover { color: var(--accent); }
+        
+        .footer-socials { display: flex; gap: 1.5rem; }
+        .footer-socials a { color: var(--text); font-size: 1.2rem; transition: 0.3s; }
+        .footer-socials a:hover { color: var(--sec); transform: translateY(-3px); }
+
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; padding-bottom: 30px; }
+        .tag-cloud a { 
+            text-decoration: none; 
+            font-size: 0.7rem; 
+            color: var(--text-dim); 
+            padding: 6px 14px; 
+            border: 1px solid rgba(255,255,255,0.08); 
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+            transition: 0.2s ease;
+            letter-spacing: 0.5px;
+        }
+        .tag-cloud a:hover { border-color: var(--sec); color: var(--sec); background: rgba(58, 134, 255, 0.05); transform: scale(1.05); }
+
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; display: flex; justify-content: space-between; align-items: center; color: var(--text-dim); font-size: 0.85rem; }
+        .footer-legal { display: flex; gap: 1.5rem; }
+        .footer-legal a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
+        .footer-legal a:hover { color: var(--text); }
+
+        @media (max-width: 900px) {
+            .hero-flex { flex-direction: column-reverse; text-align: center; gap: 2rem; }
+            .profile-img { max-width: 280px; }
+            .nav-links { display: none; }
+            .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .lg, .wide { grid-column: span 1; height: 320px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .footer-top, .footer-bottom { flex-direction: column; text-align: center; gap: 1.5rem; }
+            .footer-nav { justify-content: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="glow"></div>
+    
+    <a href="https://wa.me/263771066844" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <nav>
+        <div class="container nav-flex">
+            <div class="logo" onclick="window.scrollTo(0,0)">CHARU_IN_TECH</div>
+            <ul class="nav-links">
+                <li><a href="#projects">Work</a></li>
+                <li><a href="#skills">Tech Stack</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" id="themeBtn"><i class="fas fa-moon"></i></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero" class="container">
+        <div class="hero-flex">
+            <div class="hero-text">
+                <div class="hero-tag">CYBER ENGINEER '27</div>
+                <h1>Designing<br><span style="color:var(--sec)">Secure</span><br>Frameworks.</h1>
+                <p style="color:var(--text-dim); max-width: 500px; font-size: 1.2rem; margin-top: 1rem;">
+                    I am Charity Mavurudza. I build software where scalability meets network security.
+                </p>
+            </div>
+            <div class="hero-image-container">
+                <img src="profile.jpg.jpg" alt="Charity Mavurudza" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Selected Works</h2>
+        <div class="bento-grid">
+            <a href="https://github.com/CharityMavurudza/my_portfolio" target="_blank" class="project-link lg">
+                <div class="bento-item">
+                    <div style="display:flex; justify-content: space-between; align-items: flex-start;">
+                        <span style="color:var(--accent); font-weight: 700; font-size: 0.8rem;">NETWORKING</span>
+                        <span class="status-badge" style="color: var(--whatsapp);">Python Script</span>
+                    </div>
+                    <h3>Network Port Scanner</h3>
+                    <p style="color:var(--text-dim);">A multi-threaded script that identifies open ports and services running on a target IP.</p>
+                </div>
+            </a>
+            <div class="bento-item">
+                <div style="display:flex; justify-content: space-between; align-items: flex-start;">
+                    <span style="color:var(--sec); font-weight: 700; font-size: 0.8rem;">CRYPTOGRAPHY</span>
+                    <span class="status-badge" style="color: var(--sec);">AES-256</span>
+                </div>
+                <h3>Secure Password Vault</h3>
+                <p style="color:var(--text-dim); font-size: 0.9rem;">Encrypted local storage for credentials using Fernet symmetric encryption.</p>
+            </div>
+            <a href="#contact" class="project-link wide">
+                <div class="bento-item">
+                    <div style="display:flex; justify-content: space-between; align-items: flex-start;">
+                        <span style="color:var(--accent); font-weight: 700; font-size: 0.8rem;">ENGINEERING</span>
+                        <span class="status-badge" style="color: #ffb703; border-color: #ffb703;">In Development</span>
+                    </div>
+                    <h3>Academic Scheduling Suite</h3>
+                    <p style="color:var(--text-dim);">A complex prioritization engine built to automate university-level task management.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">The Tech Stack</h2>
+        <div class="skills-wrap">
+            <div class="skill-pill"><i class="fab fa-python" style="color: #3776AB;"></i> Python</div>
+            <div class="skill-pill"><i class="fas fa-code" style="color: #00599C;"></i> C++</div>
+            <div class="skill-pill"><i class="fab fa-js" style="color: #F7DF1E;"></i> JavaScript</div>
+            <div class="skill-pill"><i class="fab fa-react" style="color: #61DAFB;"></i> React</div>
+            <div class="skill-pill"><i class="fas fa-shield-alt" style="color: var(--accent);"></i> Cyber Security</div>
+            <div class="skill-pill"><i class="fas fa-network-wired" style="color: var(--sec);"></i> Networking</div>
+            <div class="skill-pill"><i class="fab fa-docker" style="color: #2496ED;"></i> Docker</div>
+            <div class="skill-pill"><i class="fab fa-git-alt" style="color: #F05032;"></i> Git</div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <div class="contact-card">
+            <h2 style="margin-bottom: 0.5rem; font-size: 2.5rem;">Connect</h2>
+            <p style="color: var(--text-dim); margin-bottom: 3rem;">Ready to collaborate? Send a message below or via WhatsApp.</p>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm" class="form-grid">
+                <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+                <div class="form-group"><input type="email" name="email" placeholder="Email Address" required></div>
+                <div class="form-group full-width"><textarea name="message" rows="5" placeholder="Inquiry details..." required></textarea></div>
+                <div class="full-width"><button type="submit" class="submit-btn">Send Transmission</button></div>
+            </form>
+            <div id="success-msg" style="display: none; text-align: center; padding: 40px;">
+                <i class="fas fa-paper-plane" style="font-size: 3rem; color: var(--sec); margin-bottom: 1rem;"></i>
+                <h3>Transmission Received!</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="logo" onclick="window.scrollTo(0,0)">CHARU_IN_TECH</div>
+                <ul class="footer-nav">
+                    <li><a href="#projects">Work</a></li>
+                    <li><a href="#skills">Tech Stack</a></li>
+                    <li><a href="#contact">Hire Me</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#contact">Support</a></li>
+                </ul>
+                <div class="footer-socials">
+                    <a href="https://github.com/CharityMavurudza" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/charity-mavurudza-818436280/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://instagram.com/charumavhu" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="tag-cloud">
+                <a href="resources.html">#CyberSecurity</a>
+                <a href="resources.html">#NetworkEngineering</a>
+                <a href="#skills">#Python</a>
+                <a href="resources.html">#PenetrationTesting</a>
+                <a href="resources.html">#EthicalHacking</a>
+                <a href="#skills">#WebDev</a>
+                <a href="#skills">#ReactJS</a>
+                <a href="#skills">#C++</a>
+                <a href="privacy.html">#DataPrivacy</a>
+                <a href="resources.html">#Encryption</a>
+                <a href="resources.html">#ZeroTrust</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 CHARU_IN_TECH.</p>
+                <div class="footer-legal">
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="resources.html">Resources</a>
+                    <a href="https://github.com/CharityMavurudza" target="_blank">Portfolio Source</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const glow = document.getElementById('glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        const themeBtn = document.getElementById('themeBtn');
+        const body = document.body;
+        themeBtn.addEventListener('click', () => {
+            if (body.hasAttribute('data-theme')) {
+                body.removeAttribute('data-theme');
+                themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        const form = document.getElementById('contactForm');
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "SENDING...";
+            
+            // Note: You must replace 'YOUR_FORM_ID' with your actual Formspree ID
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+            
+            if (response.ok) {
+                form.style.display = 'none';
+                document.getElementById('success-msg').style.display = 'block';
+            } else {
+                btn.innerHTML = originalText;
+                alert("Transmission failed. Please try again or use WhatsApp.");
+            }
+        };
+
+        if (localStorage.getItem('theme') === 'light') {
+            body.setAttribute('data-theme', 'light');
+            themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+    </script>
+</body>
+</html>

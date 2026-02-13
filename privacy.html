@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | CHARU_IN_TECH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --accent: #ff006e;
+            --sec: #3a86ff;
+            --text: #ffffff;
+            --text-dim: #a0a0a0;
+            --card: rgba(255, 255, 255, 0.03);
+        }
+
+        [data-theme="light"] {
+            --bg: #f5f5f7;
+            --accent: #d00056;
+            --sec: #0056d2;
+            --text: #1d1d1f;
+            --text-dim: #424245;
+            --card: rgba(0, 0, 0, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; transition: 0.3s; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 100px 2rem; }
+
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1rem;
+        }
+        .back-btn:hover { transform: translateX(-5px); }
+
+        h1 { font-size: 3rem; font-weight: 900; margin-bottom: 1.5rem; background: linear-gradient(to right, var(--accent), var(--sec)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: var(--sec); }
+        p { color: var(--text-dim); margin-bottom: 1rem; }
+        
+        .privacy-card {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 28px;
+        }
+
+        footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" onclick="if(window.history.length > 1) { window.history.back(); return false; }" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to HomePage
+        </a>
+        
+        <div class="privacy-card">
+            <h1>Privacy First.</h1>
+            <p>Last Updated: February 2026</p>
+            
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+
+            <h2>1. Commitment to Privacy</h2>
+            <p>As a Cyber Security specialist, I believe privacy is a fundamental human right. This portfolio is designed with a "Privacy First" architecture, meaning I collect the absolute minimum amount of data required to communicate with you.</p>
+
+            <h2>2. Data Collection</h2>
+            <p>I do not use invasive cookies or third-party trackers (like Google Analytics). The only data collected is:</p>
+            <ul style="color: var(--text-dim); margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>Contact Information:</strong> Name, email, and message content if you choose to use the contact form.</li>
+                <li><strong>Theme Preference:</strong> A small local storage key is used to remember if you prefer Dark or Light mode. This stays on your device.</li>
+            </ul>
+
+            <h2>3. Data Usage & Security</h2>
+            <p>Your data is never sold or shared for marketing purposes. Contact form submissions are handled via Formspree and are protected by industry-standard SSL/TLS encryption during transmission.</p>
+
+            <h2>4. Your Rights</h2>
+            <p>You have the right to request the deletion of any communication we have had. Simply reach out via LinkedIn or WhatsApp to initiate a data wipe.</p>
+        </div>
+
+        <footer>
+            &copy; 2026 CHARU_IN_TECH | Designed for Security.
+        </footer>
+    </div>
+
+    <script>
+        // Apply theme from main page
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.setAttribute('data-theme', 'light');
+        }
+    </script>
+</body>
+</html>
