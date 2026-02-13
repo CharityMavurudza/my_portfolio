@@ -51,7 +51,7 @@
 
         nav { padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 100; backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); background: var(--nav-bg); }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 900; font-size: 1.4rem; background: linear-gradient(to right, var(--accent), var(--sec)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; }
+        .logo { font-weight: 900; font-size: 1.4rem; background: linear-gradient(to right, var(--accent), var(--sec)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; }
         
         .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
@@ -198,7 +198,10 @@
                 </p>
             </div>
             <div class="hero-image-container">
-                <img src="profile.jpg" alt="Charity Mavurudza" class="profile-img">
+                <img src="./profile.jpg" 
+                     alt="Charity Mavurudza" 
+                     class="profile-img" 
+                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400&h=500';">
             </div>
         </div>
     </section>
@@ -322,16 +325,25 @@
 
         const themeBtn = document.getElementById('themeBtn');
         const body = document.body;
+        
+        // Fix theme toggle icon logic
+        function updateIcon() {
+            if (body.hasAttribute('data-theme')) {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+
         themeBtn.addEventListener('click', () => {
             if (body.hasAttribute('data-theme')) {
                 body.removeAttribute('data-theme');
-                themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
                 localStorage.setItem('theme', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
-                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
                 localStorage.setItem('theme', 'light');
             }
+            updateIcon();
         });
 
         const form = document.getElementById('contactForm');
@@ -341,26 +353,30 @@
             const originalText = btn.innerHTML;
             btn.innerHTML = "SENDING...";
             
-            // Note: You must replace 'YOUR_FORM_ID' with your actual Formspree ID
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-            
-            if (response.ok) {
-                form.style.display = 'none';
-                document.getElementById('success-msg').style.display = 'block';
-            } else {
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    form.style.display = 'none';
+                    document.getElementById('success-msg').style.display = 'block';
+                } else {
+                    throw new Error('Failed');
+                }
+            } catch (err) {
                 btn.innerHTML = originalText;
-                alert("Transmission failed. Please try again or use WhatsApp.");
+                alert("Transmission failed. Please use WhatsApp or verify your Formspree ID.");
             }
         };
 
+        // Initialize state
         if (localStorage.getItem('theme') === 'light') {
             body.setAttribute('data-theme', 'light');
-            themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
         }
+        updateIcon();
     </script>
 </body>
 </html>
